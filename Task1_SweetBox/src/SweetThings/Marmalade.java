@@ -1,3 +1,7 @@
+package SweetThings;
+
+import SweetThings.BaseSweetThing;
+
 import java.util.Random;
 
 public class Marmalade extends BaseSweetThing {
@@ -9,8 +13,8 @@ public class Marmalade extends BaseSweetThing {
     public Marmalade()
     {
         name = "Marmalade";
-        price = 300.d;
-        weight = 75.d;
+        price = 300;
+        weight = 75;
 
         Random random = new Random();
         shape = SHAPES[random.nextInt(SHAPES.length)];

@@ -1,3 +1,7 @@
+package SweetThings;
+
+import SweetThings.BaseSweetThing;
+
 public class Chocolate extends BaseSweetThing {
 
     private double cacaoPercent;
@@ -5,8 +9,8 @@ public class Chocolate extends BaseSweetThing {
     public Chocolate()
     {
         name = "Chocolate";
-        price = 150.d;
-        weight = 200.d;
+        price = 150;
+        weight = 200;
 
         cacaoPercent = Math.random();
     }

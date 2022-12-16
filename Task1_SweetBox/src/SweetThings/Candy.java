@@ -1,4 +1,8 @@
-public class Candy extends BaseSweetThing{
+package SweetThings;
+
+import SweetThings.BaseSweetThing;
+
+public class Candy extends BaseSweetThing {
 
     private static final double MIN_RADIUS = 1.f;
     private static final double MAX_RADIUS = 10.f;
@@ -7,8 +11,8 @@ public class Candy extends BaseSweetThing{
 
     public Candy() {
         name = "Candy";
-        price = 25.f;
-        weight = 50.f;
+        price = 25;
+        weight = 50;
 
         radius = Math.random() * (MAX_RADIUS - MIN_RADIUS) + MIN_RADIUS;
     }
