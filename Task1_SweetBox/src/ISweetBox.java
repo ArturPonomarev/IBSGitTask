@@ -7,6 +7,6 @@ public interface ISweetBox {
     public void PrintWeight();
     public void PrintPrice();
     public void PrintAllSweets();
-    public void OptimizeWeight();
-    public void OptimizePrice();
+    public void OptimizeWeight(int needWeight);
+    public void OptimizePrice(int needPrice);
 }

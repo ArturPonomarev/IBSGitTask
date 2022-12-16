@@ -1,6 +1,8 @@
 import SweetThings.BaseSweetThing;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class SweetBox implements ISweetBox {
 
@@ -29,22 +31,12 @@ public class SweetBox implements ISweetBox {
 
     @Override
     public void PrintWeight() {
-        double weightSum = 0.d;
-        for (var sweet : sweetsArray)
-        {
-            weightSum+=sweet.GetWeight();
-        }
-        System.out.println("Общий вес коробки: " + weightSum);
+        System.out.println("Общий вес коробки: " + CalculateWeight());
     }
 
     @Override
     public void PrintPrice() {
-        double priceSum = 0.d;
-        for (var sweet : sweetsArray)
-        {
-            priceSum+=sweet.GetPrice();
-        }
-        System.out.println("Общая стоимость коробки: " + priceSum);
+        System.out.println("Общая стоимость коробки: " + CalculatePrice());
     }
 
     @Override
@@ -62,12 +54,52 @@ public class SweetBox implements ISweetBox {
     }
 
     @Override
-    public void OptimizeWeight() {
+    public void OptimizeWeight(int needWeight) {
+        Collections.sort(sweetsArray, new Comparator<BaseSweetThing>() {
+            @Override
+            public int compare(BaseSweetThing o1, BaseSweetThing o2) {
+                return o2.GetWeight() - o1.GetWeight();
+            }
+        });
 
+        while (CalculateWeight()>needWeight)
+        {
+            DeleteSweetLast();
+        }
     }
 
     @Override
-    public void OptimizePrice() {
+    public void OptimizePrice(int needPrice) {
+        Collections.sort(sweetsArray, new Comparator<BaseSweetThing>() {
+            @Override
+            public int compare(BaseSweetThing o1, BaseSweetThing o2) {
+                return o2.GetPrice() - o1.GetPrice();
+            }
+        });
 
+        while (CalculatePrice()>needPrice)
+        {
+            DeleteSweetLast();
+        }
+    }
+
+    private int CalculateWeight()
+    {
+        int weightSum = 0;
+        for (var sweet : sweetsArray)
+        {
+            weightSum+=sweet.GetWeight();
+        }
+        return weightSum;
+    }
+
+    private int CalculatePrice()
+    {
+        int priceSum = 0;
+        for (var sweet : sweetsArray)
+        {
+            priceSum+=sweet.GetPrice();
+        }
+        return priceSum;
     }
 }
