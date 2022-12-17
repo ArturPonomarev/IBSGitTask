@@ -10,7 +10,7 @@ public class SweetBox implements ISweetBox {
 
     public SweetBox()
     {
-        sweetsArray = new ArrayList<BaseSweetThing>();
+        sweetsArray = new ArrayList();
     }
 
     @Override
@@ -26,6 +26,10 @@ public class SweetBox implements ISweetBox {
 
     @Override
     public void DeleteSweetByIndex(int index) {
+
+        if (index>=sweetsArray.size() || index < 0)
+            return;
+
         sweetsArray.remove(index);
     }
 
@@ -41,7 +45,13 @@ public class SweetBox implements ISweetBox {
 
     @Override
     public void PrintAllSweets() {
-        System.out.println("Все сладости в коробке");
+        System.out.println("Все сладости в коробке:");
+        if (sweetsArray.size() == 0)
+        {
+            System.out.println("Коробка пустая :(");
+            return;
+        }
+
         System.out.format("%3s%15s%6s%6s\n","№","Название","Вес","Цена");
         for (int i = 0; i<sweetsArray.size(); ++i)
         {
@@ -55,7 +65,7 @@ public class SweetBox implements ISweetBox {
 
     @Override
     public void OptimizeWeight(int needWeight) {
-        Collections.sort(sweetsArray, new Comparator<BaseSweetThing>() {
+        sweetsArray.sort(new Comparator<BaseSweetThing>() {
             @Override
             public int compare(BaseSweetThing o1, BaseSweetThing o2) {
                 return o2.GetWeight() - o1.GetWeight();
@@ -70,7 +80,7 @@ public class SweetBox implements ISweetBox {
 
     @Override
     public void OptimizePrice(int needPrice) {
-        Collections.sort(sweetsArray, new Comparator<BaseSweetThing>() {
+        sweetsArray.sort(new Comparator<BaseSweetThing>() {
             @Override
             public int compare(BaseSweetThing o1, BaseSweetThing o2) {
                 return o2.GetPrice() - o1.GetPrice();

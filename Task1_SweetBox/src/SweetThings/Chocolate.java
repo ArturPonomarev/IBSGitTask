@@ -1,14 +1,12 @@
 package SweetThings;
 
-import SweetThings.BaseSweetThing;
-
 public class Chocolate extends BaseSweetThing {
 
     private double cacaoPercent;
 
     public Chocolate()
     {
-        name = "Chocolate";
+        name = "Шоколад";
         price = 150;
         weight = 200;
 

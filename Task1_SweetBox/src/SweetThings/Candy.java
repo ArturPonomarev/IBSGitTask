@@ -1,7 +1,5 @@
 package SweetThings;
 
-import SweetThings.BaseSweetThing;
-
 public class Candy extends BaseSweetThing {
 
     private static final double MIN_RADIUS = 1.f;
@@ -10,7 +8,7 @@ public class Candy extends BaseSweetThing {
     private double radius;
 
     public Candy() {
-        name = "Candy";
+        name = "Конфета";
         price = 25;
         weight = 50;
 

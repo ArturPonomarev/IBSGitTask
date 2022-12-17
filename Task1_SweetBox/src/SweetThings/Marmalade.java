@@ -1,7 +1,5 @@
 package SweetThings;
 
-import SweetThings.BaseSweetThing;
-
 import java.util.Random;
 
 public class Marmalade extends BaseSweetThing {
@@ -12,7 +10,7 @@ public class Marmalade extends BaseSweetThing {
 
     public Marmalade()
     {
-        name = "Marmalade";
+        name = "Мармелад";
         price = 300;
         weight = 75;
 
