@@ -6,9 +6,9 @@ public class Chocolate extends BaseSweetThing {
 
     public Chocolate()
     {
-        name = "Шоколад";
-        price = 150;
-        weight = 200;
+        super.name = "Шоколад";
+        super.price = 150;
+        super.weight = 200;
 
         cacaoPercent = Math.random();
     }

@@ -65,13 +65,15 @@ public class Main {
                     break;
 
                 case OPTIMIZE_WEIGHT:
-                    System.out.println("\nВведите желаемый вес коробки.");
+                    System.out.println("\nУдаление самых легких подарков");
+                    System.out.println("Введите желаемый вес коробки.");
                     box.OptimizeWeight(in.nextInt());
                     currentState = UiStates.BOX_INTERFACE;
                     break;
 
                 case OPTIMIZE_PRICE:
-                    System.out.println("\nВведите желаемую стоимость коробки.");
+                    System.out.println("\nУдаление самых дешевых подарков");
+                    System.out.println("Введите желаемый вес коробки.");
                     box.OptimizePrice(in.nextInt());
                     currentState = UiStates.BOX_INTERFACE;
                     break;

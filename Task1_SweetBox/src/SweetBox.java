@@ -1,8 +1,6 @@
 import SweetThings.BaseSweetThing;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class SweetBox implements ISweetBox {
 
@@ -10,7 +8,7 @@ public class SweetBox implements ISweetBox {
 
     public SweetBox()
     {
-        sweetsArray = new ArrayList();
+        sweetsArray = new ArrayList<>();
     }
 
     @Override
@@ -65,12 +63,7 @@ public class SweetBox implements ISweetBox {
 
     @Override
     public void OptimizeWeight(int needWeight) {
-        sweetsArray.sort(new Comparator<BaseSweetThing>() {
-            @Override
-            public int compare(BaseSweetThing o1, BaseSweetThing o2) {
-                return o2.GetWeight() - o1.GetWeight();
-            }
-        });
+        sweetsArray.sort((o1, o2) -> o2.GetWeight() - o1.GetWeight());
 
         while (CalculateWeight()>needWeight)
         {
@@ -79,15 +72,10 @@ public class SweetBox implements ISweetBox {
     }
 
     @Override
-    public void OptimizePrice(int needPrice) {
-        sweetsArray.sort(new Comparator<BaseSweetThing>() {
-            @Override
-            public int compare(BaseSweetThing o1, BaseSweetThing o2) {
-                return o2.GetPrice() - o1.GetPrice();
-            }
-        });
+    public void OptimizePrice(int needWeight) {
+        sweetsArray.sort((o1, o2) -> o2.GetPrice() - o1.GetPrice());
 
-        while (CalculatePrice()>needPrice)
+        while (CalculateWeight()>needWeight)
         {
             DeleteSweetLast();
         }

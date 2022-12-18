@@ -10,9 +10,9 @@ public class Marmalade extends BaseSweetThing {
 
     public Marmalade()
     {
-        name = "Мармелад";
-        price = 300;
-        weight = 75;
+        super.name = "Мармелад";
+        super.price = 300;
+        super.weight = 75;
 
         Random random = new Random();
         shape = SHAPES[random.nextInt(SHAPES.length)];

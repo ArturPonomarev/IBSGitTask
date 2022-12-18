@@ -8,9 +8,9 @@ public class Candy extends BaseSweetThing {
     private double radius;
 
     public Candy() {
-        name = "Конфета";
-        price = 25;
-        weight = 50;
+        super.name = "Конфета";
+        super.price = 25;
+        super.weight = 50;
 
         radius = Math.random() * (MAX_RADIUS - MIN_RADIUS) + MIN_RADIUS;
     }
