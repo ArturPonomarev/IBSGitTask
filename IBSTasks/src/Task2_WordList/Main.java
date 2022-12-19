@@ -4,20 +4,52 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
 
-        ArrayList<String> wordsArray = FileReader.GetWordsInFile("./IBSTasks/Resources/words.txt");
-        Collections.sort(wordsArray);
-        HashMap<String,Integer> wordsCountMap = new HashMap<>();
+    final static String RELATIVE_FILE_PATH_START_SYMBOL = ".";
 
+    public static String InputFilePath()
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите относительный или абсолютный путь к файлу");
+        String filePath = scanner.nextLine();
+
+        if (filePath.charAt(0) == '/')
+            filePath = RELATIVE_FILE_PATH_START_SYMBOL + filePath;
+        return filePath;
+    }
+
+    public static void main(String[] args) {
+
+        ArrayList<String> wordsArray = null;
+        boolean isFileCorrect;
+        do
+        {
+            isFileCorrect = true;
+            try
+            {
+                wordsArray = FileReaderUtil.GetWordsInFile(InputFilePath());
+            }
+            catch (FileNotFoundException e)
+            {
+                isFileCorrect = false;
+                System.out.println("Вы ввели некорректный путь к файлу, повторите ввод");
+            }
+        }while (!isFileCorrect);
+
+
+        TreeMap<String,Integer> wordsCountMap = new TreeMap<>();
+
+        //Массив слов полученный из файла преобразуется в карту слов <Слово, кол-во вхождений>
         for (var str : wordsArray)
         {
             wordsCountMap.merge(str, 1, Integer::sum);
         }
 
+
         System.out.println("               Информация о словах");
         System.out.format("%20s | %5s | %1s\n","Слово","Кол-во","%");
         System.out.println("---------------------------------------");
+        //Подсчет и вывод статистики слов, поиск чаще встречаемого слова
         HashMap<String, Integer> maxWordsCount = new HashMap<>();
         int max = 0;
         for (var key : wordsCountMap.keySet())
@@ -38,6 +70,10 @@ public class Main {
         }
 
         System.out.println("\n");
-        System.out.println(maxWordsCount);
+        System.out.println("Самое большое количество слов:");
+        for (var key : maxWordsCount.keySet())
+        {
+            System.out.format("Слово \"%s\" - %d вхождений\n",key,maxWordsCount.get(key));
+        }
     }
 }
