@@ -7,7 +7,7 @@ import java.util.TreeMap;
 
 public class WordsUtil {
 
-    private static final String SPLIT_REGEX = "[,.—!? 0-9\t\n]+";
+    private static final String SPLIT_REGEX = "[^А-Яа-я]+";
 
     public static ArrayList<String> ConvertStringToWords(String string)
     {
