@@ -1,3 +1,5 @@
+package Task1_SweetBox.src;
+
 import SweetThings.*;
 
 import java.util.Scanner;

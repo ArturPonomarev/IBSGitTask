@@ -1,4 +1,4 @@
-package SweetThings;
+package Task1_SweetBox.src.SweetThings;
 
 import java.util.Random;
 
