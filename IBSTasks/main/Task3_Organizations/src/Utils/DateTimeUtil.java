@@ -2,20 +2,32 @@ package src.Utils;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class DateTimeUtil {
-    private final static String JSON_DATE_FORMAT = "d.MM.yyyy";
-    private final static String STANDART_DATE_FORMAT = "dd/MM/yy";
 
-    public static LocalDate ConvertToNeedDateTime(String stringDate)
+    public static LocalDate getDateFromStringFormat(String stringDate, String stringDateFormat)
     {
-        return ConvertToNeedDateTime(stringDate,STANDART_DATE_FORMAT);
+        return LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(stringDateFormat));
     }
 
-    public static LocalDate ConvertToNeedDateTime(String stringDate, String needFormat)
+    public static String getFormattedLocalDate(LocalDate date, String formatPatter)
     {
-        LocalDate date = LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(JSON_DATE_FORMAT));
-        date.format(DateTimeFormatter.ofPattern(needFormat));
-        return date;
+        return date.format(DateTimeFormatter.ofPattern(formatPatter));
+    }
+
+    public static boolean CheckDateFormatIsCorrect(String stringToCheck, String correctFormat)
+    {
+        boolean isCorrect = true;
+        try
+        {
+            LocalDate.parse(stringToCheck, DateTimeFormatter.ofPattern(correctFormat));
+        }
+        catch (DateTimeParseException e)
+        {
+            isCorrect = false;
+        }
+
+        return isCorrect;
     }
 }
