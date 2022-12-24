@@ -3,7 +3,6 @@ package src;
 import src.JsonModels.CompanyList;
 import src.Utils.DateTimeUtil;
 import src.Utils.JsonUtil;
-import src.Utils.Printer;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -32,13 +31,16 @@ public class Main {
         //Вывод просроченных ценных бумаг
         System.out.print("\nСписок просроченых ценных бумаг:");
         int oldSecuritySum = 0;
+
         for (var company : companyList.companies)
         {
             for (var security : company.securities)
             {
                 if (DateTimeUtil.getDateFromStringFormat(security.date,JSON_DATE_FORMAT).isBefore(LocalDate.now()))
                 {
-                    Printer.PrintSecurityInformationForOldSecurities(security,company.name);
+                    System.out.println("\nЦенная бумага:");
+                    System.out.format("\tКод: %s\n\tДата истечения: %s\n\tВладелец: %s\n",
+                            security.code,security.date,company.name);
                     oldSecuritySum++;
                 }
             }
@@ -93,8 +95,10 @@ public class Main {
                     break;
 
                 case "2":
-                    System.out.println("\nВведите наименование валюты");
-
+                    System.out.print("\nВведите наименование валюты: ");
+                    for (var currency : CURRENCY_NAMES)
+                        System.out.print(currency + ", ");
+                    System.out.println();
 
                     boolean isCurrencyNameCorrect = false;
                     do {
@@ -120,7 +124,11 @@ public class Main {
                                     .filter(security->
                                             security.currency.stream()
                                                     .anyMatch(currency->currency.equals(finalUserInput)))
-                                    .forEach(Printer::PrintSecurityInformationForCurrencyRequest));
+                                    .forEach(security -> {
+                                        System.out.format("\nЦенная бумага в валюте %s:\n",finalUserInput);
+                                        System.out.format("\tКод: %s\n\tВладелец: %s\n",
+                                                security.code,company.name);
+                                    }));
 
                     break;
             }
