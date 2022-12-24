@@ -13,6 +13,7 @@ public class WordsUtil {
     {
         ArrayList<String> array = new ArrayList<>();
         Collections.addAll(array, string.split(SPLIT_REGEX));
+        array.replaceAll(String::toLowerCase);
         return array;
     }
 
