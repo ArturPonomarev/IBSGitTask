@@ -1,4 +1,6 @@
-import SweetThings.BaseSweetThing;
+package Task1_SweetBox;
+
+import Task1_SweetBox.SweetThings.BaseSweetThing;
 
 import java.util.ArrayList;
 

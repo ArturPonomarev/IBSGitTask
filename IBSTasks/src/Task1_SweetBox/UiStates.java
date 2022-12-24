@@ -1,3 +1,5 @@
+package Task1_SweetBox;
+
 public enum UiStates {
     EXIT,
     DELETE_SWEET_BY_INDEX,

@@ -1,4 +1,4 @@
-package SweetThings;
+package Task1_SweetBox.SweetThings;
 
 public class Chocolate extends BaseSweetThing {
 
