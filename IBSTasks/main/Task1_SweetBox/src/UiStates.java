@@ -1,4 +1,5 @@
-package Task1_SweetBox;
+package Task1_SweetBox.src;
+
 
 public enum UiStates {
     EXIT,

@@ -1,6 +1,7 @@
-package Task1_SweetBox;
+package Task1_SweetBox.src;
 
-import Task1_SweetBox.SweetThings.BaseSweetThing;
+import SweetThings.BaseSweetThing;
+
 
 public interface ISweetBox {
     public int AddSweet(BaseSweetThing sweetThing);

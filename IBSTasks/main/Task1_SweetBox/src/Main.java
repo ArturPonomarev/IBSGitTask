@@ -1,6 +1,8 @@
-package Task1_SweetBox;
 
-import Task1_SweetBox.SweetThings.*;
+ackage Task1_SweetBox.src;
+
+import SweetThings.*;
+
 
 import java.util.Scanner;
 
@@ -14,7 +16,7 @@ public class Main {
         {
             switch (currentState)
             {
-                case UiStates.BOX_INTERFACE:
+                case BOX_INTERFACE:
                     System.out.println("\n\n");
                     box.PrintWeight();
                     box.PrintPrice();
@@ -60,20 +62,24 @@ public class Main {
                     }
                     break;
 
-                case UiStates.DELETE_SWEET_BY_INDEX:
+                case DELETE_SWEET_BY_INDEX:
+
                     System.out.println("\nВведите номер удаляемой сладости.");
                     box.DeleteSweetByIndex(in.nextInt() - 1);
                     currentState = UiStates.BOX_INTERFACE;
                     break;
 
-                case UiStates.OPTIMIZE_WEIGHT:
+                case OPTIMIZE_WEIGHT:
+
                     System.out.println("\nУдаление самых легких подарков");
                     System.out.println("Введите желаемый вес коробки.");
                     box.OptimizeWeight(in.nextInt());
                     currentState = UiStates.BOX_INTERFACE;
                     break;
 
-                case UiStates.OPTIMIZE_PRICE:
+
+                case OPTIMIZE_PRICE:
+
                     System.out.println("\nУдаление самых дешевых подарков");
                     System.out.println("Введите желаемый вес коробки.");
                     box.OptimizePrice(in.nextInt());
