@@ -1,5 +1,6 @@
 package Task1_SweetBox.src.SweetThings;
 
+
 import java.util.Random;
 
 public class Marmalade extends BaseSweetThing {

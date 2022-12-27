@@ -2,6 +2,7 @@ package Task1_SweetBox.src;
 
 import SweetThings.BaseSweetThing;
 
+
 public interface ISweetBox {
     public int AddSweet(BaseSweetThing sweetThing);
     public void DeleteSweetLast();

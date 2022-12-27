@@ -1,5 +1,6 @@
 package Task1_SweetBox.src.SweetThings;
 
+
 public class Candy extends BaseSweetThing {
 
     private static final double MIN_RADIUS = 1.f;
